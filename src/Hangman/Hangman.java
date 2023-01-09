@@ -9,16 +9,16 @@ public class Hangman {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        for(int m = 1; m > m - 1; m++){
+        for (int m = 1; m > m - 1; m++) {
 
             System.out.print("""
                     HANGMAN\s
                     Type "play" to play the game, "exit" to quit:>\s
                     """);
             String answer = scanner.nextLine();
-            if(Objects.equals(answer,"play")){
+            if (Objects.equals(answer, "play")) {
                 game();
-            }else {
+            } else {
                 break;
             }
         }
@@ -35,28 +35,29 @@ public class Hangman {
         String secretword = words.get(random.nextInt(words.size()));
         Set<String> word = new HashSet<>();
         List<String> letters = new ArrayList<>();
-        for (int i = 0; i < secretword.length(); i++){
+        for (int i = 0; i < secretword.length(); i++) {
             word.add(String.valueOf(secretword.charAt(i)));
         }
         String replaceword;
-        System.out.println(secretword.replaceAll("[a-zA-Z]","-"));
-        for(int i = 8; i >= 1;){
+        System.out.println(secretword.replaceAll("[a-zA-Z]", "-"));
+        for (int i = 8; i >= 1; ) {
             System.out.print("Input a letter:> ");
             String letter = scanner.nextLine();
-            if(letters.contains(letter)){
+            if (letters.contains(letter)) {
                 System.out.println("You've already guessed this letter.");
             }
-            if(letter.length() > 1){
+            if (letter.length() > 1) {
                 System.out.println("You should input a single letter.");
             }
-            if(word.contains(letter) && !letters.contains(letter)){
+            if (word.contains(letter) && !letters.contains(letter)) {
                 letters.add(letter);
-                replaceword = secretword.replaceAll("[^"+letters+"]","-");
-                System.out.println(replaceword);}
-            if (letter.matches("[A-Z]")){
+                replaceword = secretword.replaceAll("[^" + letters + "]", "-");
+                System.out.println(replaceword);
+            }
+            if (letter.matches("[A-Z]")) {
                 System.out.println("Please enter a lowercase English letter.");
             }
-            if (!word.contains(letter) && letter.length() < 2){
+            if (!word.contains(letter) && letter.length() < 2) {
                 System.out.println("That letter doesn't appear in the word");
                 i--;
             }
@@ -64,7 +65,7 @@ public class Hangman {
                 System.out.println("You survived!");
                 break;
             }
-            if (i == 0){
+            if (i == 0) {
                 System.out.println("You lost!");
             }
         }
