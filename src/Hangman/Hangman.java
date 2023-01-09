@@ -10,6 +10,7 @@ public class Hangman {
 
         Scanner scanner = new Scanner(System.in);
         for(int m = 1; m > m - 1; m++){
+
             System.out.print("""
                     HANGMAN\s
                     Type "play" to play the game, "exit" to quit:>\s
